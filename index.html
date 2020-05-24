@@ -4,91 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="./style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Comfortaa&family=Raleway&display=swap" rel="stylesheet">
     <title>Custom Weather Dashboard</title>
-
 </head>
+
 <body>
     <header>
+        <!-- Main title -->
         <h1>Weather Dashboard</h1>
     </header>
 
+    <!-- Defining one big row -->
     <section class="row">
-        <section class="col-md-4">
-            <section class="row">
-                <section class="form-group">
-                    <label for="citySearch">Search for a City</label>
-                    <input type="citySearch" class="form-control" id="citySearch">
-                  </section>
-            </section>
-            <section class="row">
-                <section>History of Cities searched</section>
-            </section>
+
+        <!-- Left side of the dashboard -->
+        <section id="left-side" class="col-md-3">
+
+            <!-- Form to submit city -->
+            <form id="search-city">
+                <label for="city">Search for a City:</label><br>
+                <section id="input">
+                    <input type="text" name="city-name" id="city-name" placeholder="City Name">
+                    <button id="submit">Submit</button>
+                </section>
+            </form> 
+
+            <!-- Holds city buttons generated from search -->
+            <section id="city-history-search"></section>
+            <button id="clear-search-history">Clear City History</button>
         </section>
-        <section class="col-md-8">
-            <section class="row">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div>
+
+        <!-- Right side of the dashboard -->
+        <section id="right-side" class="col-md-8">
+
+            <!-- Card with current weather information -->
+            <section class="card" style="width: 54.5rem;">
+                <h3>Today's Forecast</h3>
+                <section id="top-container" class="row">
+                    <section id="city-basic-info" class="col-sm-6">
+                        <h5 id="city"></h5>
+                        <p id="current-date"></p>
+                    </section>
+                    <section class="col-sm-6">
+                        <p id="current-temp"></p>
+                        <p id="current-humid"></p>
+                        <p id="current-wind-speed"></p>
+                    </section>
+                </section>
             </section>
-            <section class="row">
-                <h3>5-Day Forecast</h3>
-                
-            </section>
-            <section class="row">
-                <div class="card" style="width: 8rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                </div>
-                <div class="card" style="width: 8rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                </div>
-                <div class="card" style="width: 8rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                </div>
-                <div class="card" style="width: 8rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                </div>
-                <div class="card" style="width: 8rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                </div>
+
+            <!-- Container with 5-day weather information -->
+            <section id="forecast-container">
+                <h3 >5-Day Forecast</h3>
+
+                <!-- Holds blocks of weather information - 5 total -->
+                <section id="future-forecast"></section>
             </section>
         </section>
     </section>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+    <script src="./script.js"></script>
+
 </body>
 </html>
